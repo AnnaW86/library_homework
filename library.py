@@ -49,6 +49,14 @@ while option != "q":
     if option == "2":
         print("Searching for a book by title...")
         # TODO - Search for a book by title
+        target_book = input("What is the title of the book you're looking for? ")
+        target_book_status = False
+        for book in library["books"]:
+            if target_book.lower() in book["title"].lower():
+                print(f'Yes, we have {book["title"]}.')
+                target_book_status = True
+        if target_book_status == False:
+            print("Sorry, we don't seem to have that.")
 
     if option == "3":
         print("Adding a book...")
