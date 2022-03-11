@@ -26,6 +26,8 @@ library = {
 
 # TODO - Print welcome statement including library name
 
+print(f'Welcome to {library["name"]}!')
+
 option = ""
 while option != "q":
     print("Options:")
@@ -40,6 +42,9 @@ while option != "q":
     if option == "1":
         print("Listing all books...")
         # TODO - List all books
+        for book in library["books"]:
+            print(f'{book["title"]} by {book["author"]}.')
+        
 
     if option == "2":
         print("Searching for a book by title...")
