@@ -85,3 +85,16 @@ while option != "q":
     if option == "5":
         print("Updating a book...")
         # TODO - Update a book
+        title_to_change = input("What is the title of the book you would like to update? ")
+        title_query = input("Would you like to update the title of the book? y/n ")
+        if title_query == "y":
+            new_title = input("What would you like the new title to be? ")
+        author_query = input("Would you like to update the author of the book? y/n ")
+        if author_query == "y":
+            new_author = input("What would you like the new author to be? ")
+        for book in library["books"]:
+            if title_to_change.lower() in book["title"].lower():
+                if title_query == "y":
+                    book["title"] = new_title
+                if author_query == "y":
+                    book["author"] = new_author
