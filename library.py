@@ -1,3 +1,6 @@
+from turtle import title
+
+
 library = {
     "name": "CodeClan Library",
     "books": [
@@ -73,6 +76,11 @@ while option != "q":
     if option == "4":
         print("Removing a book...")
         # TODO - Remove a book
+        title_to_remove = input("What is the title of the book you would like to remove? ")
+        for book in library["books"]:
+            if title_to_remove.lower() in book["title"].lower():
+                library["books"].remove(book)
+        
 
     if option == "5":
         print("Updating a book...")
