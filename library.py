@@ -80,8 +80,8 @@ while option != "q":
         for book in library["books"]:
             if title_to_remove.lower() in book["title"].lower():
                 book_found_status = True
+                print(f'\'{book["title"]}\' has been removed from the library.')
                 library["books"].remove(book)
-                print(f"\'{title_to_remove}\' has been removed from the library.")
         if book_found_status == False:
             print(f"I'm sorry, I couldn't find \'{title_to_remove}\' in our library.")
         
