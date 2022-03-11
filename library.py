@@ -61,6 +61,14 @@ while option != "q":
     if option == "3":
         print("Adding a book...")
         # TODO - Add a book
+        title_to_add = input("What is the title of the book you would like to add? ")
+        author_to_add = input("What is the name of the author? ")
+        library["books"].append(
+            {
+                "author": author_to_add,
+                "title": title_to_add
+        }
+        )
 
     if option == "4":
         print("Removing a book...")
