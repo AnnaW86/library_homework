@@ -72,14 +72,20 @@ while option != "q":
                 "title": title_to_add
         }
         )
+        print(f"You have added {title_to_add} by {author_to_add} to the library.")
 
     if option == "4":
         print("Removing a book...")
         # TODO - Remove a book
+        book_found_status = False
         title_to_remove = input("What is the title of the book you would like to remove? ")
         for book in library["books"]:
             if title_to_remove.lower() in book["title"].lower():
+                book_found_status = True
                 library["books"].remove(book)
+                print(f"{title_to_remove} has been removed from the library.")
+        if book_found_status == False:
+            print(f"I'm sorry, I couldn't find {title_to_remove} in our library.")
         
 
     if option == "5":
@@ -98,3 +104,6 @@ while option != "q":
                     book["title"] = new_title
                 if author_query == "y":
                     book["author"] = new_author
+                print(f"Your changes to {title_to_change} have been made.")
+            else:
+                print(f"I'm sorry, I couldn't find {title_to_change} in our library.")
