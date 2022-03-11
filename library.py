@@ -1,5 +1,3 @@
-from turtle import title
-
 
 library = {
     "name": "CodeClan Library",
@@ -46,7 +44,7 @@ while option != "q":
         print("Listing all books...")
         # TODO - List all books
         for book in library["books"]:
-            print(f'{book["title"]} by {book["author"]}.')
+            print(f'\'{book["title"]}\' by {book["author"]}.')
         
 
     if option == "2":
@@ -56,10 +54,10 @@ while option != "q":
         target_book_status = False
         for book in library["books"]:
             if target_book.lower() in book["title"].lower():
-                print(f'Yes, we have {book["title"]}.')
+                print(f'Yes, we have \'{book["title"]}\'.')
                 target_book_status = True
         if target_book_status == False:
-            print("Sorry, we don't seem to have that.")
+            print(f"Sorry, we don't seem to have \'{target_book}\'.")
 
     if option == "3":
         print("Adding a book...")
@@ -72,7 +70,7 @@ while option != "q":
                 "title": title_to_add
         }
         )
-        print(f"You have added {title_to_add} by {author_to_add} to the library.")
+        print(f"You have added \'{title_to_add}\' by {author_to_add} to the library.")
 
     if option == "4":
         print("Removing a book...")
@@ -83,14 +81,15 @@ while option != "q":
             if title_to_remove.lower() in book["title"].lower():
                 book_found_status = True
                 library["books"].remove(book)
-                print(f"{title_to_remove} has been removed from the library.")
+                print(f"\'{title_to_remove}\' has been removed from the library.")
         if book_found_status == False:
-            print(f"I'm sorry, I couldn't find {title_to_remove} in our library.")
+            print(f"I'm sorry, I couldn't find \'{title_to_remove}\' in our library.")
         
 
     if option == "5":
         print("Updating a book...")
         # TODO - Update a book
+        change_made_status = False
         title_to_change = input("What is the title of the book you would like to update? ")
         title_query = input("Would you like to update the title of the book? y/n ")
         if title_query == "y":
@@ -102,8 +101,13 @@ while option != "q":
             if title_to_change.lower() in book["title"].lower():
                 if title_query == "y":
                     book["title"] = new_title
+                    change_made_status = True
                 if author_query == "y":
                     book["author"] = new_author
-                print(f"Your changes to {title_to_change} have been made.")
-            else:
-                print(f"I'm sorry, I couldn't find {title_to_change} in our library.")
+                    change_made_status = True
+        if change_made_status == True:
+            print(f"Your changes to \'{title_to_change}\' have been made.")
+        elif title_query == "n" and author_query =="n":
+            print(f"You haven't given any details of the changes to be made to \'{title_to_change}\'.")
+        else:
+            print(f"I'm sorry, I couldn't find \'{title_to_change}\' in our library.")
