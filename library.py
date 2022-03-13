@@ -25,6 +25,9 @@ library = {
     ]
 }
 
+def return_to_menu():
+    input("Press any key to return to the main menu.")
+
 # TODO - Print welcome statement including library name
 
 print(f'Welcome to {library["name"]}!')
@@ -45,6 +48,7 @@ while option != "q":
         # TODO - List all books
         for book in library["books"]:
             print(f'\'{book["title"]}\' by {book["author"]}.')
+        return_to_menu()
         
 
     if option == "2":
@@ -53,11 +57,12 @@ while option != "q":
         target_book = input("What is the title of the book you're looking for? ")
         target_book_status = False
         for book in library["books"]:
-            if target_book.lower() in book["title"].lower():
+            if target_book.lower() == book["title"].lower():
                 print(f'Yes, we have \'{book["title"]}\'.')
                 target_book_status = True
         if target_book_status == False:
             print(f"Sorry, we don't seem to have \'{target_book}\'.")
+        return_to_menu()
 
     if option == "3":
         print("Adding a book...")
@@ -71,6 +76,7 @@ while option != "q":
         }
         )
         print(f"You have added \'{title_to_add}\' by {author_to_add} to the library.")
+        return_to_menu()
 
     if option == "4":
         print("Removing a book...")
@@ -78,13 +84,13 @@ while option != "q":
         book_found_status = False
         title_to_remove = input("What is the title of the book you would like to remove? ")
         for book in library["books"]:
-            if title_to_remove.lower() in book["title"].lower():
+            if title_to_remove.lower() == book["title"].lower():
                 book_found_status = True
                 print(f'\'{book["title"]}\' has been removed from the library.')
                 library["books"].remove(book)
         if book_found_status == False:
             print(f"I'm sorry, I couldn't find \'{title_to_remove}\' in our library.")
-        
+        return_to_menu()
 
     if option == "5":
         print("Updating a book...")
@@ -98,7 +104,7 @@ while option != "q":
         if author_query == "y":
             new_author = input("What would you like the new author to be? ")
         for book in library["books"]:
-            if title_to_change.lower() in book["title"].lower():
+            if title_to_change.lower() == book["title"].lower():
                 if title_query == "y":
                     book["title"] = new_title
                     change_made_status = True
@@ -111,3 +117,4 @@ while option != "q":
             print(f"You haven't given any details of the changes to be made to \'{title_to_change}\'.")
         else:
             print(f"I'm sorry, I couldn't find \'{title_to_change}\' in our library.")
+        return_to_menu()
