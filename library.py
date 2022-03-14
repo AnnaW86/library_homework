@@ -26,7 +26,7 @@ library = {
 }
 
 def return_to_menu():
-    input("Press any key to return to the main menu.")
+    input("Press any key to return to the main menu. ")
 
 # TODO - Print welcome statement including library name
 
@@ -82,14 +82,18 @@ while option != "q":
         print("Removing a book...")
         # TODO - Remove a book
         book_found_status = False
+        books_to_keep = []
         title_to_remove = input("What is the title of the book you would like to remove? ")
         for book in library["books"]:
             if title_to_remove.lower() == book["title"].lower():
                 book_found_status = True
-                print(f'\'{book["title"]}\' has been removed from the library.')
-                library["books"].remove(book)
+            else:
+                books_to_keep.append(book)
+        library["books"] = books_to_keep
         if book_found_status == False:
             print(f"I'm sorry, I couldn't find \'{title_to_remove}\' in our library.")
+        elif book_found_status == True:
+            print(f"\'{title_to_remove}\' has been removed from the library.")
         return_to_menu()
 
     if option == "5":
